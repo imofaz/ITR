@@ -2,14 +2,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+# Manipulator parameters
 L1 =5 #length of link 1
 L2=3.5 #length of link 2
 
-start_point = np.array([2,4])  # Starting position
-end_point = np.array([2,-4])  # deflection position
+start_point = np.array([2,4])  # Starting position of deflection
+end_point = np.array([2,-4])  # deflection position of deflection
 trajectory1 = np.linspace(start_point, end_point, 15)
 trajectory2 = np.linspace(end_point,start_point, 15)
-trajectory=np.concatenate((trajectory1,trajectory2))
+trajectory=np.concatenate((trajectory1,trajectory2))  #trajectory points of deflection
 
 # Initialize plot
 fig, ax = plt.subplots()
