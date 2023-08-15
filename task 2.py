@@ -2,17 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+# Manipulator parameters
 L1 =int(input("enter length of link 1= "))
 L2=int(input("enter length of link 2= "))
 
+#wall parameters
 a =float(input("enter x intercept of wall= "))
 b=float(input("enter y intercept of wall= "))
 z=float((a*b)/(a+b))
 Nx=10*np.cos(np.arctan(abs(b/a)))
 Ny=10*np.sin(np.arctan(abs(b/a)))
 
-start_point = np.array([L1-L2, 0])  # Starting position
-end_point = np.array([z,z])  # Ending position
+start_point = np.array([L1-L2, 0])  # Starting position of robotic arm
+end_point = np.array([z,z])  # Ending position  of robotic arm
 trajectory = np.linspace(start_point, end_point, 25)
 p="point of contact : "+str(z)+","+str(z)
 
