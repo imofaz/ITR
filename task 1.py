@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 # Manipulator parameters
-L1 = 1.0  # Length of the first link
-L2 = 1.0  # Length of the second link
+L1 = 1.0  # Length of link 1
+L2 = 1.0  # Length of link 2
 
 # Trajectory parameters
-num_points = 100
+num_points = 50
 start_point = np.array([1.3, 0.5])  # Starting position (x, y)
 end_point = np.array([-1.5, -0.3])  # Ending position (x, y)
 trajectory = np.linspace(start_point, end_point, num_points)
@@ -17,12 +17,6 @@ def inverse_kinematics(x, y):
     theta2 = np.arccos((x**2 + y**2 - L1**2 - L2**2) / (2 * L1 * L2))
     theta1 = np.arctan2(y,x) - np.arctan2(L2 * np.sin(theta2),( L1 + L2 * np.cos(theta2)))
     return theta1, theta2
-
-# Initialize plot
-fig, ax = plt.subplots()
-ax.set_xlim(-5, 5)
-ax.set_ylim(-5, 5)
-line, = ax.plot([], [], 'o-', lw=2)
 
 def init():
     line.set_data([], [])
@@ -38,6 +32,12 @@ def animate(i):
 
     line.set_data(manipulator_x, manipulator_y)
     return line,
+
+# Initialize plot
+fig, ax = plt.subplots()
+ax.set_xlim(-5, 5)
+ax.set_ylim(-5, 5)
+line, = ax.plot([], [], 'o-', lw=2)
 
 # Animate the manipulator following the trajectory
 ani = FuncAnimation(fig, animate, frames=len(trajectory), init_func=init, blit=True)
