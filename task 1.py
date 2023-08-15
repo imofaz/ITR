@@ -41,4 +41,5 @@ line, = ax.plot([], [], 'o-', lw=2)
 
 # Animate the manipulator following the trajectory
 ani = FuncAnimation(fig, animate, frames=len(trajectory), init_func=init, blit=True)
+plt.title("2R Manipulator")
 plt.show()
